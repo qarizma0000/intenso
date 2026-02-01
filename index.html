@@ -12,11 +12,11 @@ body {
   background:#000;
   display:flex;
   height:100vh;
-  color:#fff;
   font-family:Arial, Helvetica, sans-serif;
+  color:#fff;
 }
 
-/* KANAL LİSTESİ */
+/* KANAL PANELİ */
 #channels {
   width:260px;
   background:#111;
@@ -46,9 +46,6 @@ body {
 /* PLAYER */
 #player {
   flex:1;
-  display:flex;
-  align-items:center;
-  justify-content:center;
 }
 
 video {
@@ -72,29 +69,26 @@ video {
 </div>
 
 <script>
-const playlistUrl =
-"http://forvpndns.org:8080/get.php?username=upEj3XpbzH&password=pTsQ7HG&type=m3u_plus&output=ts";
+const playlistUrl = "kanallar.m3u"; // GITHUB'A YÜKLEDİĞİN DOSYA
 
 const channelBox = document.getElementById("channels");
 const video = document.getElementById("video");
 let hls;
 
-// M3U OKU
 fetch(playlistUrl)
   .then(res => res.text())
   .then(data => parseM3U(data));
 
 function parseM3U(data) {
   const lines = data.split("\n");
-  let currentName = "";
+  let name = "";
 
   lines.forEach(line => {
     line = line.trim();
     if (line.startsWith("#EXTINF")) {
-      currentName = line.split(",").pop();
-    } 
-    else if (line.startsWith("http")) {
-      addChannel(currentName, line);
+      name = line.split(",").pop();
+    } else if (line.startsWith("http")) {
+      addChannel(name, line);
     }
   });
 }
@@ -103,11 +97,11 @@ function addChannel(name, url) {
   const div = document.createElement("div");
   div.className = "channel";
   div.innerText = name || "Kanal";
-  div.onclick = () => playChannel(url);
+  div.onclick = () => play(url);
   channelBox.appendChild(div);
 }
 
-function playChannel(url) {
+function play(url) {
   if (hls) hls.destroy();
 
   if (Hls.isSupported()) {

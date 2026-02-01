@@ -2,50 +2,71 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Canlı Yayın</title>
+  <title>Intenso TV Canlı Yayın</title>
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
   <style>
     body {
-      margin:0;
-      background:#000;
-      display:flex;
-      height:100vh;
+      margin: 0;
+      background: #000;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
     }
+
     .video {
-      flex:3;
+      flex: 3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+
     .chat {
-      flex:1;
-      background:#111;
+      flex: 1;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
+
     video {
-      width:100%;
-      height:100%;
+      width: 100%;
+      height: 100%;
+      background: #000;
     }
   </style>
 </head>
 <body>
 
-<div class="video">
-  <video id="video" controls autoplay></video>
-</div>
+  <!-- VIDEO ALANI -->
+  <div class="video">
+    <video id="video" controls autoplay></video>
+  </div>
 
-<div class="chat">
-  <script id="cid0020000430976663143" data-cfasync="false" async src="//st.chatango.com/js/gz/emb.js" style="width: 250px;height: 350px;">{"handle":"intensotv","arch":"js","styles":{"a":"CC0000","b":100,"c":"FFFFFF","d":"FFFFFF","k":"CC0000","l":"CC0000","m":"CC0000","n":"FFFFFF","p":"10","q":"CC0000","r":100,"fwtickm":1}}</script><!-- Chat buraya eklenecek -->
-</div>
+  <!-- CHAT ALANI -->
+  <div class="chat">
+    <script id="cid0020000430976663143"
+      data-cfasync="false"
+      async
+      src="//st.chatango.com/js/gz/emb.js"
+      style="width: 100%; height: 100%;">
+      {"handle":"intensotv","arch":"js","styles":{"a":"CC0000","b":100,"c":"FFFFFF","d":"FFFFFF","k":"CC0000","l":"CC0000","m":"CC0000","n":"FFFFFF","p":"10","q":"CC0000","r":100,"fwtickm":1}}
+    </script>
+  </div>
 
-<script>
-  var video = document.getElementById('video');
-  var videoSrc = 'BURAYA_M3U8_LINKİN';
+  <!-- M3U8 PLAYER -->
+  <script>
+    var video = document.getElementById('video');
+    var videoSrc = 'BURAYA_M3U8_LINKİN';
 
-  if (Hls.isSupported()) {
-    var hls = new Hls();
-    hls.loadSource(videoSrc);
-    hls.attachMedia(video);
-  } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-    video.src = videoSrc;
-  }
-</script>
+    if (Hls.isSupported()) {
+      var hls = new Hls();
+      hls.loadSource(videoSrc);
+      hls.attachMedia(video);
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = videoSrc;
+    }
+  </script>
 
 </body>
 </html>

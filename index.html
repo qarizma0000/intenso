@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>Intenso TV Canlı Yayın</title>
+  <title>Intenso TV | Canlı Yayın</title>
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
   <style>
@@ -12,6 +12,7 @@
       display: flex;
       height: 100vh;
       overflow: hidden;
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     .video {
@@ -19,14 +20,32 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      background: #000;
     }
 
     .chat {
       flex: 1;
       background: #111;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      flex-direction: column;
+      border-left: 2px solid #222;
+    }
+
+    .chat-header {
+      color: #fff;
+      text-align: center;
+      padding: 10px;
+      font-weight: bold;
+      background: #cc0000;
+      font-size: 14px;
+    }
+
+    .chat-info {
+      color: #ccc;
+      text-align: center;
+      font-size: 12px;
+      padding: 6px;
+      background: #1a1a1a;
     }
 
     video {
@@ -38,13 +57,19 @@
 </head>
 <body>
 
-  <!-- VIDEO ALANI -->
+  <!-- VIDEO -->
   <div class="video">
     <video id="video" controls autoplay></video>
   </div>
 
-  <!-- CHAT ALANI -->
+  <!-- CHAT -->
   <div class="chat">
+    <div class="chat-header">💬 Canlı Sohbet (Türkçe)</div>
+    <div class="chat-info">
+      Hoş geldiniz 👋<br>
+      Lütfen küfür etmeyelim, saygılı olalım 🇹🇷
+    </div>
+
     <script id="cid0020000430976663143"
       data-cfasync="false"
       async
@@ -54,7 +79,7 @@
     </script>
   </div>
 
-  <!-- M3U8 PLAYER -->
+  <!-- PLAYER -->
   <script>
     var video = document.getElementById('video');
     var videoSrc = 'BURAYA_M3U8_LINKİN';

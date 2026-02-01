@@ -3,14 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <title>QarizmaNuke | Canlı Maç Yayını</title>
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
       background: #000;
@@ -20,14 +15,14 @@
 
     header {
       background: #0b0b0b;
-      padding: 10px 15px;
+      padding: 10px;
       text-align: center;
       font-size: 16px;
       font-weight: bold;
       border-bottom: 2px solid #1f1f1f;
     }
 
-    .player-wrapper {
+    .player {
       width: 100%;
       height: calc(100vh - 50px);
     }
@@ -38,34 +33,19 @@
       border: none;
       background: #000;
     }
-
-    footer {
-      background: #0b0b0b;
-      text-align: center;
-      padding: 6px;
-      font-size: 12px;
-      color: #aaa;
-      border-top: 1px solid #1f1f1f;
-    }
   </style>
 </head>
 
 <body>
 
-  <header>
-    ⚽ Canlı Maç Yayını
-  </header>
+  <header>⚽ Canlı Maç Yayını</header>
 
-  <div class="player-wrapper">
+  <div class="player">
     <iframe
-      src="https://kick.com/QarizmaNuke/embed"
+      src="https://player.kick.com/QarizmaNuke?parent=qarizma0000.github.io"
       allowfullscreen>
     </iframe>
   </div>
-
-  <footer>
-    Yayın sırasında donma olursa sayfayı yenileyin
-  </footer>
 
 </body>
 </html>

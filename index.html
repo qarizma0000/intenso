@@ -1,118 +1,71 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-<meta charset="UTF-8">
-<title>Intenso TV | Kanal Listesi</title>
+  <meta charset="UTF-8">
+  <title>QarizmaNuke | Canlı Maç Yayını</title>
 
-<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body {
-  margin:0;
-  background:#000;
-  display:flex;
-  height:100vh;
-  font-family:Arial, Helvetica, sans-serif;
-  color:#fff;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-/* KANAL PANELİ */
-#channels {
-  width:260px;
-  background:#111;
-  overflow-y:auto;
-  border-right:2px solid #222;
-}
+    body {
+      margin: 0;
+      background: #000;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #fff;
+    }
 
-#channels h3 {
-  margin:0;
-  padding:10px;
-  background:#cc0000;
-  text-align:center;
-  font-size:14px;
-}
+    header {
+      background: #0b0b0b;
+      padding: 10px 15px;
+      text-align: center;
+      font-size: 16px;
+      font-weight: bold;
+      border-bottom: 2px solid #1f1f1f;
+    }
 
-.channel {
-  padding:8px 10px;
-  cursor:pointer;
-  border-bottom:1px solid #222;
-  font-size:13px;
-}
+    .player-wrapper {
+      width: 100%;
+      height: calc(100vh - 50px);
+    }
 
-.channel:hover {
-  background:#222;
-}
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: #000;
+    }
 
-/* PLAYER */
-#player {
-  flex:1;
-}
-
-video {
-  width:100%;
-  height:100%;
-  background:#000;
-}
-</style>
+    footer {
+      background: #0b0b0b;
+      text-align: center;
+      padding: 6px;
+      font-size: 12px;
+      color: #aaa;
+      border-top: 1px solid #1f1f1f;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- KANAL LİSTESİ -->
-<div id="channels">
-  <h3>📺 Kanal Listesi</h3>
-</div>
+  <header>
+    ⚽ Canlı Maç Yayını
+  </header>
 
-<!-- PLAYER -->
-<div id="player">
-  <video id="video" controls autoplay></video>
-</div>
+  <div class="player-wrapper">
+    <iframe
+      src="https://kick.com/QarizmaNuke/embed"
+      allowfullscreen>
+    </iframe>
+  </div>
 
-<script>
-const playlistUrl = "kanallar.m3u"; // GITHUB'A YÜKLEDİĞİN DOSYA
-
-const channelBox = document.getElementById("channels");
-const video = document.getElementById("video");
-let hls;
-
-fetch(playlistUrl)
-  .then(res => res.text())
-  .then(data => parseM3U(data));
-
-function parseM3U(data) {
-  const lines = data.split("\n");
-  let name = "";
-
-  lines.forEach(line => {
-    line = line.trim();
-    if (line.startsWith("#EXTINF")) {
-      name = line.split(",").pop();
-    } else if (line.startsWith("http")) {
-      addChannel(name, line);
-    }
-  });
-}
-
-function addChannel(name, url) {
-  const div = document.createElement("div");
-  div.className = "channel";
-  div.innerText = name || "Kanal";
-  div.onclick = () => play(url);
-  channelBox.appendChild(div);
-}
-
-function play(url) {
-  if (hls) hls.destroy();
-
-  if (Hls.isSupported()) {
-    hls = new Hls();
-    hls.loadSource(url);
-    hls.attachMedia(video);
-  } else {
-    video.src = url;
-  }
-}
-</script>
+  <footer>
+    Yayın sırasında donma olursa sayfayı yenileyin
+  </footer>
 
 </body>
 </html>

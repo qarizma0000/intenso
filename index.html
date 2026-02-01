@@ -1,97 +1,124 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>Intenso TV | Canlı Yayın</title>
-  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+<meta charset="UTF-8">
+<title>Intenso TV | Kanal Listesi</title>
 
-  <style>
-    body {
-      margin: 0;
-      background: #000;
-      display: flex;
-      height: 100vh;
-      overflow: hidden;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
 
-    .video {
-      flex: 3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #000;
-    }
+<style>
+body {
+  margin:0;
+  background:#000;
+  display:flex;
+  height:100vh;
+  color:#fff;
+  font-family:Arial, Helvetica, sans-serif;
+}
 
-    .chat {
-      flex: 1;
-      background: #111;
-      display: flex;
-      flex-direction: column;
-      border-left: 2px solid #222;
-    }
+/* KANAL LİSTESİ */
+#channels {
+  width:260px;
+  background:#111;
+  overflow-y:auto;
+  border-right:2px solid #222;
+}
 
-    .chat-header {
-      color: #fff;
-      text-align: center;
-      padding: 10px;
-      font-weight: bold;
-      background: #cc0000;
-      font-size: 14px;
-    }
+#channels h3 {
+  margin:0;
+  padding:10px;
+  background:#cc0000;
+  text-align:center;
+  font-size:14px;
+}
 
-    .chat-info {
-      color: #ccc;
-      text-align: center;
-      font-size: 12px;
-      padding: 6px;
-      background: #1a1a1a;
-    }
+.channel {
+  padding:8px 10px;
+  cursor:pointer;
+  border-bottom:1px solid #222;
+  font-size:13px;
+}
 
-    video {
-      width: 100%;
-      height: 100%;
-      background: #000;
-    }
-  </style>
+.channel:hover {
+  background:#222;
+}
+
+/* PLAYER */
+#player {
+  flex:1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+video {
+  width:100%;
+  height:100%;
+  background:#000;
+}
+</style>
 </head>
+
 <body>
 
-  <!-- VIDEO -->
-  <div class="video">
-    <video id="video" controls autoplay></video>
-  </div>
+<!-- KANAL LİSTESİ -->
+<div id="channels">
+  <h3>📺 Kanal Listesi</h3>
+</div>
 
-  <!-- CHAT -->
-  <div class="chat">
-    <div class="chat-header">💬 Canlı Sohbet (Türkçe)</div>
-    <div class="chat-info">
-      Hoş geldiniz 👋<br>
-      Lütfen küfür etmeyelim, saygılı olalım 🇹🇷
-    </div>
+<!-- PLAYER -->
+<div id="player">
+  <video id="video" controls autoplay></video>
+</div>
 
-    <script id="cid0020000430976663143"
-      data-cfasync="false"
-      async
-      src="//st.chatango.com/js/gz/emb.js"
-      style="width: 100%; height: 100%;">
-      {"handle":"intensotv","arch":"js","styles":{"a":"CC0000","b":100,"c":"FFFFFF","d":"FFFFFF","k":"CC0000","l":"CC0000","m":"CC0000","n":"FFFFFF","p":"10","q":"CC0000","r":100,"fwtickm":1}}
-    </script>
-  </div>
+<script>
+const playlistUrl =
+"http://forvpndns.org:8080/get.php?username=upEj3XpbzH&password=pTsQ7HG&type=m3u_plus&output=ts";
 
-  <!-- PLAYER -->
-  <script>
-    var video = document.getElementById('video');
-    var videoSrc = 'BURAYA_M3U8_LINKİN';
+const channelBox = document.getElementById("channels");
+const video = document.getElementById("video");
+let hls;
 
-    if (Hls.isSupported()) {
-      var hls = new Hls();
-      hls.loadSource(videoSrc);
-      hls.attachMedia(video);
-    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-      video.src = videoSrc;
+// M3U OKU
+fetch(playlistUrl)
+  .then(res => res.text())
+  .then(data => parseM3U(data));
+
+function parseM3U(data) {
+  const lines = data.split("\n");
+  let currentName = "";
+
+  lines.forEach(line => {
+    line = line.trim();
+    if (line.startsWith("#EXTINF")) {
+      currentName = line.split(",").pop();
+    } 
+    else if (line.startsWith("http")) {
+      addChannel(currentName, line);
     }
-  </script>
+  });
+}
+
+function addChannel(name, url) {
+  const div = document.createElement("div");
+  div.className = "channel";
+  div.innerText = name || "Kanal";
+  div.onclick = () => playChannel(url);
+  channelBox.appendChild(div);
+}
+
+function playChannel(url) {
+  if (hls) hls.destroy();
+
+  if (Hls.isSupported()) {
+    hls = new Hls();
+    hls.loadSource(url);
+    hls.attachMedia(video);
+  } else {
+    video.src = url;
+  }
+}
+</script>
 
 </body>
 </html>

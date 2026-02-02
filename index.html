@@ -1,55 +1,31 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <title>Canlı Maç Yayını</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  body {
+    margin: 0;
+    background: #000;
+    overflow: hidden;
+  }
 
-  <style>
-    body {
-      margin: 0;
-      background: #000;
-      font-family: Arial, Helvetica, sans-serif;
-      color: #fff;
-      overflow: hidden;
-    }
+  .mask {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 30px; /* DAHA KÜÇÜK */
+    width: 100%;
+    background: #000;
+    z-index: 10;
+  }
 
-    header {
-      background: #000;
-      height: 42px; /* OVERLAY'İ KAPATAN BAR */
-      width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 10;
-    }
+  iframe {
+    width: 100%;
+    height: calc(100vh + 30px);
+    margin-top: -30px;
+    border: none;
+  }
+</style>
 
-    .player {
-      width: 100%;
-      height: 100vh;
-      position: relative;
-    }
+<div class="mask"></div>
 
-    iframe {
-      width: 100%;
-      height: calc(100vh + 42px); /* yukarı kaydırma */
-      border: none;
-      margin-top: -42px;
-    }
-  </style>
-</head>
-
-<body>
-
-  <!-- GİZLEYİCİ BAR -->
-  <header></header>
-
-  <div class="player">
-    <iframe
-      src="https://player.kick.com/QarizmaNuke?parent=qarizma0000.github.io"
-      allowfullscreen>
-    </iframe>
-  </div>
-
-</body>
-</html>
+<iframe
+  src="https://player.kick.com/QarizmaNuke?parent=qarizma0000.github.io"
+  allowfullscreen>
+</iframe>

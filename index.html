@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
   <meta charset="UTF-8">
-  <title>QarizmaNuke | Canlı Maç Yayını</title>
+  <title>Canlı Maç Yayını</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -11,34 +11,38 @@
       background: #000;
       font-family: Arial, Helvetica, sans-serif;
       color: #fff;
+      overflow: hidden;
     }
 
     header {
-      background: #0b0b0b;
-      padding: 10px;
-      text-align: center;
-      font-size: 16px;
-      font-weight: bold;
-      border-bottom: 2px solid #1f1f1f;
+      background: #000;
+      height: 42px; /* OVERLAY'İ KAPATAN BAR */
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 10;
     }
 
     .player {
       width: 100%;
-      height: calc(100vh - 50px);
+      height: 100vh;
+      position: relative;
     }
 
     iframe {
       width: 100%;
-      height: 100%;
+      height: calc(100vh + 42px); /* yukarı kaydırma */
       border: none;
-      background: #000;
+      margin-top: -42px;
     }
   </style>
 </head>
 
 <body>
 
-  <header>⚽ Canlı Maç Yayını</header>
+  <!-- GİZLEYİCİ BAR -->
+  <header></header>
 
   <div class="player">
     <iframe

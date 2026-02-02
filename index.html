@@ -1,31 +1,54 @@
-<style>
-  body {
-    margin: 0;
-    background: #000;
-    overflow: hidden;
-  }
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Canlı Maç Yayını</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  .mask {
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 30px; /* DAHA KÜÇÜK */
-    width: 100%;
-    background: #000;
-    z-index: 10;
-  }
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      overflow: hidden;
+    }
 
-  iframe {
-    width: 100%;
-    height: calc(100vh + 30px);
-    margin-top: -30px;
-    border: none;
-  }
-</style>
+    .player {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+    }
 
-<div class="mask"></div>
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
 
-<iframe
-  src="https://player.kick.com/QarizmaNuke?parent=qarizma0000.github.io"
-  allowfullscreen>
-</iframe>
+    /* 👇 SOL ÜST TIKLAMA ENGELLEYİCİ */
+    .click-blocker {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 420px;   /* Kick bilgi alanını kapsar */
+      height: 120px;
+      z-index: 5;
+      background: transparent;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="player">
+    <!-- TIKLAMA ENGELLEYİCİ -->
+    <div class="click-blocker"></div>
+
+    <!-- KICK PLAYER -->
+    <iframe
+      src="https://player.kick.com/QarizmaNuke?parent=qarizma0000.github.io"
+      allowfullscreen>
+    </iframe>
+  </div>
+
+</body>
+</html>

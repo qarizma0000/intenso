@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>INTENSO TV | Online Yayın Aboneliği</title>
+<title>INTENSO TV</title>
 
 <style>
 body{
@@ -25,7 +25,6 @@ background:rgba(0,0,0,0.65);
 z-index:-1;
 }
 
-/* HEADER */
 header{
 background:#000;
 padding:20px;
@@ -40,19 +39,33 @@ to{transform:translateY(0);opacity:1}
 
 .logo{
 width:120px;
-margin-bottom:10px;
+animation:pulse 2s infinite;
 }
 
-/* HERO */
-.hero{
-padding:50px 20px;
-text-align:center;
-animation:fadeIn 1.5s;
+@keyframes pulse{
+0%{transform:scale(1)}
+50%{transform:scale(1.05)}
+100%{transform:scale(1)}
 }
 
-@keyframes fadeIn{
-from{opacity:0}
-to{opacity:1}
+/* KAYAN YAZI */
+.marquee{
+background:#00ffcc;
+color:black;
+padding:8px;
+font-weight:bold;
+}
+
+/* SAHTE ONLINE */
+#online{
+position:fixed;
+bottom:20px;
+left:20px;
+background:#00ffcc;
+color:black;
+padding:10px;
+border-radius:5px;
+font-weight:bold;
 }
 
 /* PACKAGES */
@@ -75,21 +88,14 @@ animation:slideUp 1s ease;
 transition:.3s;
 }
 
-.card:hover{
-transform:scale(1.05);
-box-shadow:0 0 25px #00ffcc;
-}
-
 @keyframes slideUp{
 from{transform:translateY(40px);opacity:0}
 to{transform:translateY(0);opacity:1}
 }
 
-.card h3{color:#00ffcc}
-
-.price{
-font-size:26px;
-margin:15px 0;
+.card:hover{
+transform:scale(1.05);
+box-shadow:0 0 25px #00ffcc;
 }
 
 .btn{
@@ -103,7 +109,6 @@ border-radius:5px;
 font-weight:bold;
 }
 
-/* FOOTER */
 footer{
 background:#000;
 padding:20px;
@@ -116,56 +121,55 @@ color:#aaa;
 
 <body>
 
+<div class="marquee">
+<marquee>🔥 ÜCRETSİZ TEST • DONMA YOK • 7/24 DESTEK • HIZLI AKTİVASYON 🔥</marquee>
+</div>
+
 <header>
-
-<!-- LOGO -->
-<img src="https://i.imgur.com/6qK0NwZ.png" class="logo">
-
-<h1 style="color:#00ffcc;margin:0">INTENSO TV</h1>
-<p>Premium Online Yayın Aboneliği</p>
-
+<img src="logo.png" class="logo">
+<h1 style="color:#00ffcc">INTENSO TV</h1>
+<p>Premium Online Yayın</p>
 </header>
-
-<section class="hero">
-<h2>Sınırsız Yayın Keyfi</h2>
-<p>HD Kalite • Hızlı Kurulum • 7/24 Destek</p>
-</section>
 
 <section class="packages">
 
 <div class="card">
 <h3>1 Ay</h3>
-<div class="price">₺150</div>
-<a class="btn" href="https://wa.me/905545009420?text=Merhaba%20INTENSO%20TV%201%20aylık%20paket%20almak%20istiyorum">WhatsApp Sipariş</a>
+<p>₺150</p>
+<a class="btn" href="https://wa.me/905545009420">Sipariş</a>
 </div>
 
 <div class="card">
 <h3>3 Ay</h3>
-<div class="price">₺350</div>
-<a class="btn" href="https://wa.me/905545009420?text=Merhaba%20INTENSO%20TV%203%20aylık%20paket%20almak%20istiyorum">WhatsApp Sipariş</a>
+<p>₺350</p>
+<a class="btn" href="https://wa.me/905545009420">Sipariş</a>
 </div>
 
 <div class="card">
 <h3>12 Ay</h3>
-<div class="price">₺1100</div>
-<a class="btn" href="https://wa.me/905545009420?text=Merhaba%20INTENSO%20TV%2012%20aylık%20paket%20almak%20istiyorum">WhatsApp Sipariş</a>
+<p>₺1100</p>
+<a class="btn" href="https://wa.me/905545009420">Sipariş</a>
 </div>
 
 </section>
 
 <center>
-<a class="btn" style="width:260px;"
-href="https://wa.me/905545009420?text=Ücretsiz%20test%20hesabı%20istiyorum">
-🎁 Ücretsiz Test Al
-</a>
+<a class="btn" style="width:250px" href="https://wa.me/905545009420">🎁 Ücretsiz Test Al</a>
 </center>
-
-<br><br>
 
 <footer>
 📞 +90 554 500 94 20<br>
-© 2026 INTENSO TV
+© INTENSO TV
 </footer>
+
+<div id="online">🟢 Online: <span id="num">37</span></div>
+
+<script>
+setInterval(()=>{
+document.getElementById("num").innerText=
+Math.floor(Math.random()*40)+20;
+},3000);
+</script>
 
 </body>
 </html>

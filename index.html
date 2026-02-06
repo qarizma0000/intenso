@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>RED KIT IP TV</title>
+<title>RED KIT IPTV</title>
 
 <style>
 body{
@@ -21,11 +21,9 @@ text-align:center;
 padding:20px;
 background:rgba(0,0,0,0.35);
 backdrop-filter: blur(6px);
-border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
-.logo{width:70px;animation:pulse 2.5s infinite}
-@keyframes pulse{0%{scale:1}50%{scale:1.05}100%{scale:1}}
+.logo{width:80px}
 
 .packages{display:flex;flex-wrap:wrap;justify-content:center;gap:20px;padding:30px}
 
@@ -65,27 +63,34 @@ footer{text-align:center;background:black;padding:15px}
 
 <header>
 <img src="logo.png" class="logo">
-<h2 style="color:red">RED KIT IP TV</h2>
+<h2 style="color:red">RED KIT IPTV</h2>
 <p>Premium Online Yayın</p>
 </header>
+
+<!-- VIDEO -->
+<center style="margin:30px">
+<video width="600" controls autoplay loop>
+<source src="video.mp4" type="video/mp4">
+</video>
+</center>
 
 <section class="packages">
 
 <div class="card">
 <h3>1 Ay</h3>
-<p>₺150</p>
+<p>₺199</p>
 <a class="btn" href="https://t.me/proiptvtr">Telegram Sipariş</a>
 </div>
 
 <div class="card">
 <h3>3 Ay</h3>
-<p>₺350</p>
+<p>₺499</p>
 <a class="btn" href="https://t.me/proiptvtr">Telegram Sipariş</a>
 </div>
 
 <div class="card">
 <h3>12 Ay</h3>
-<p>₺1100</p>
+<p>₺1499</p>
 <a class="btn" href="https://t.me/proiptvtr">Telegram Sipariş</a>
 </div>
 
@@ -99,20 +104,25 @@ footer{text-align:center;background:black;padding:15px}
 ✔ Film & Dizi<br>
 ✔ Belgesel<br>
 ✔ Çocuk<br>
-✔ Yetişkin<br>
-✔ Bein – S Sport – BluTV<br>
+✔ Bein – S Sport<br>
 ✔ 10.000+ Kanal + VOD
 </div>
 </div>
 
 <div class="section">
-<h3 onclick="toggle('setup')">⚙️ Kurulum Ayarları</h3>
+<h3 onclick="toggle('setup')">⚙️ Kurulum & Uygulamalar</h3>
 <div id="setup" class="hidden">
-Android / Smart TV / Box / Telefon<br><br>
-1️⃣ IBO / Duplex indir<br>
-2️⃣ Kullanıcı bilgisi gir<br>
-3️⃣ Liste yüklenir<br><br>
-Telegram’dan ücretsiz kurulum desteği.
+Desteklenen uygulamalar:<br><br>
+
+✅ MegaDigital<br>
+✅ Smarters IPTV<br><br>
+
+Kurulum:<br>
+1️⃣ Uygulamayı indir<br>
+2️⃣ Kullanıcı bilgilerini gir<br>
+3️⃣ Liste otomatik yüklenir<br><br>
+
+Telegram’dan ücretsiz destek verilir.
 </div>
 </div>
 
@@ -122,10 +132,10 @@ Telegram’dan ücretsiz kurulum desteği.
 
 <footer>
 Telegram: @proiptvtr<br>
-© RED KIT IP TV
+© RED KIT IPTV
 </footer>
 
-<div id="online">🟢 Online: <span id="num">24</span></div>
+<div id="online">🟢 Online: <span id="num">23</span></div>
 <div id="popup"></div>
 
 <script>

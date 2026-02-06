@@ -11,6 +11,7 @@ font-family:Arial;
 background:url("https://images.unsplash.com/photo-1518770660439-4636190af475") no-repeat center center fixed;
 background-size:cover;
 color:white;
+overflow-x:hidden;
 }
 
 body:before{
@@ -24,22 +25,37 @@ background:rgba(0,0,0,0.65);
 z-index:-1;
 }
 
+/* HEADER */
 header{
 background:#000;
 padding:20px;
 text-align:center;
+animation:topDown 1s ease;
 }
 
-header h1{
-color:#00ffcc;
-margin:0;
+@keyframes topDown{
+from{transform:translateY(-50px);opacity:0}
+to{transform:translateY(0);opacity:1}
 }
 
+.logo{
+width:120px;
+margin-bottom:10px;
+}
+
+/* HERO */
 .hero{
-padding:60px 20px;
+padding:50px 20px;
 text-align:center;
+animation:fadeIn 1.5s;
 }
 
+@keyframes fadeIn{
+from{opacity:0}
+to{opacity:1}
+}
+
+/* PACKAGES */
 .packages{
 display:flex;
 flex-wrap:wrap;
@@ -55,11 +71,21 @@ padding:25px;
 width:250px;
 text-align:center;
 box-shadow:0 0 15px #000;
+animation:slideUp 1s ease;
+transition:.3s;
 }
 
-.card h3{
-color:#00ffcc;
+.card:hover{
+transform:scale(1.05);
+box-shadow:0 0 25px #00ffcc;
 }
+
+@keyframes slideUp{
+from{transform:translateY(40px);opacity:0}
+to{transform:translateY(0);opacity:1}
+}
+
+.card h3{color:#00ffcc}
 
 .price{
 font-size:26px;
@@ -77,6 +103,7 @@ border-radius:5px;
 font-weight:bold;
 }
 
+/* FOOTER */
 footer{
 background:#000;
 padding:20px;
@@ -90,8 +117,13 @@ color:#aaa;
 <body>
 
 <header>
-<h1>INTENSO TV</h1>
+
+<!-- LOGO -->
+<img src="https://i.imgur.com/6qK0NwZ.png" class="logo">
+
+<h1 style="color:#00ffcc;margin:0">INTENSO TV</h1>
 <p>Premium Online Yayın Aboneliği</p>
+
 </header>
 
 <section class="hero">
@@ -122,7 +154,8 @@ color:#aaa;
 </section>
 
 <center>
-<a class="btn" style="width:260px;" href="https://wa.me/905545009420?text=Ücretsiz%20test%20hesabı%20istiyorum">
+<a class="btn" style="width:260px;"
+href="https://wa.me/905545009420?text=Ücretsiz%20test%20hesabı%20istiyorum">
 🎁 Ücretsiz Test Al
 </a>
 </center>

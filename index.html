@@ -2,7 +2,7 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
-<title>INTENSO TV</title>
+<title>RED KIT IP TV</title>
 
 <style>
 body{
@@ -24,7 +24,6 @@ backdrop-filter: blur(6px);
 border-bottom:1px solid rgba(255,255,255,0.1);
 }
 
-
 .logo{width:70px;animation:pulse 2.5s infinite}
 @keyframes pulse{0%{scale:1}50%{scale:1.05}100%{scale:1}}
 
@@ -34,24 +33,28 @@ border-bottom:1px solid rgba(255,255,255,0.1);
 background:#151515;padding:20px;border-radius:10px;width:230px;text-align:center;
 box-shadow:0 0 15px #000;transition:.3s;
 }
-.card:hover{transform:scale(1.05)}
-.card h3{color:#00ffcc}
-.btn{background:#00ffcc;padding:10px;border-radius:5px;color:black;text-decoration:none;font-weight:bold;display:block;margin-top:10px}
+.card:hover{transform:scale(1.05);box-shadow:0 0 20px red}
+.card h3{color:red}
+
+.btn{
+background:red;padding:10px;border-radius:5px;
+color:white;text-decoration:none;font-weight:bold;display:block;margin-top:10px
+}
 
 .section{
 max-width:800px;margin:auto;background:#151515;padding:20px;border-radius:10px;margin-bottom:20px
 }
 
-.section h3{color:#00ffcc;cursor:pointer}
+.section h3{color:red;cursor:pointer}
 
 .hidden{display:none}
 
 #online{
-position:fixed;bottom:20px;left:20px;background:#00ffcc;color:black;padding:8px;border-radius:5px;font-weight:bold
+position:fixed;bottom:20px;left:20px;background:red;color:white;padding:8px;border-radius:5px;font-weight:bold
 }
 
 #popup{
-position:fixed;bottom:20px;right:20px;background:#00ffcc;color:black;padding:10px;border-radius:5px;display:none;font-weight:bold
+position:fixed;bottom:20px;right:20px;background:red;color:white;padding:10px;border-radius:5px;display:none;font-weight:bold
 }
 
 footer{text-align:center;background:black;padding:15px}
@@ -62,40 +65,27 @@ footer{text-align:center;background:black;padding:15px}
 
 <header>
 <img src="logo.png" class="logo">
-<h2 style="color:#00ffcc">INTENSO TV</h2>
+<h2 style="color:red">RED KIT IP TV</h2>
 <p>Premium Online Yayın</p>
 </header>
 
-<center style="margin:30px">
-
-<center style="margin:30px">
-
-<video width="550" autoplay muted loop playsinline controls>
-  <source src="video.mp4" type="video/mp4">
-</video>
-
-</center>
-
-
-
-  
 <section class="packages">
 
 <div class="card">
 <h3>1 Ay</h3>
-<p>₺199</p>
+<p>₺150</p>
 <a class="btn" href="https://t.me/proiptvtr">Telegram Sipariş</a>
 </div>
 
 <div class="card">
 <h3>3 Ay</h3>
-<p>₺499</p>
+<p>₺350</p>
 <a class="btn" href="https://t.me/proiptvtr">Telegram Sipariş</a>
 </div>
 
 <div class="card">
 <h3>12 Ay</h3>
-<p>₺1499</p>
+<p>₺1100</p>
 <a class="btn" href="https://t.me/proiptvtr">Telegram Sipariş</a>
 </div>
 
@@ -104,13 +94,13 @@ footer{text-align:center;background:black;padding:15px}
 <div class="section">
 <h3 onclick="toggle('channels')">📺 Yayın Listesi</h3>
 <div id="channels" class="hidden">
-✔ Türkiye Ulusal Kanallar<br>
+✔ Türkiye Kanalları<br>
 ✔ Spor Paketleri<br>
-✔ Film & Dizi Kanalları<br>
+✔ Film & Dizi<br>
 ✔ Belgesel<br>
-✔ Çocuk Kanalları<br>
-✔ Yetişkin Kanalları<br>
-✔ Bein – S Sport – Exxen – BluTV<br>
+✔ Çocuk<br>
+✔ Yetişkin<br>
+✔ Bein – S Sport – BluTV<br>
 ✔ 10.000+ Kanal + VOD
 </div>
 </div>
@@ -118,13 +108,11 @@ footer{text-align:center;background:black;padding:15px}
 <div class="section">
 <h3 onclick="toggle('setup')">⚙️ Kurulum Ayarları</h3>
 <div id="setup" class="hidden">
-📱 Android / Smart TV / Box / Telefon destekli<br><br>
-
-1️⃣ Uygulama indir (IBO / MegaDigital / SmartersPro / 9ExtreamIptv / XCIPTV)<br>
-2️⃣ Kullanıcı adı + şifre gir<br>
-3️⃣ Liste otomatik yüklenir<br><br>
-
-Kurulum desteği Telegram üzerinden ücretsiz verilir.
+Android / Smart TV / Box / Telefon<br><br>
+1️⃣ IBO / Duplex indir<br>
+2️⃣ Kullanıcı bilgisi gir<br>
+3️⃣ Liste yüklenir<br><br>
+Telegram’dan ücretsiz kurulum desteği.
 </div>
 </div>
 
@@ -134,10 +122,10 @@ Kurulum desteği Telegram üzerinden ücretsiz verilir.
 
 <footer>
 Telegram: @proiptvtr<br>
-© INTENSO TV
+© RED KIT IP TV
 </footer>
 
-<div id="online">🟢 Online: <span id="num">26</span></div>
+<div id="online">🟢 Online: <span id="num">24</span></div>
 <div id="popup"></div>
 
 <script>
